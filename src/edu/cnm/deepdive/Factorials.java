@@ -2,42 +2,44 @@ package edu.cnm.deepdive;
 
 import java.math.BigInteger;
 
+/**
+ * Demonstrates recursive and iterative approaches to computing the factorial function directly.
+ */
 public class Factorials {
 
-  /** The first method written computes the factorial function value using multiplication of Big Integers method.
-   *  The second method written below computes teh factorial function value using an interative method over a "for" loop.
-   * @param n >= 0
+  /**
+   * The first method written computes the factorial function value using multiplication of Big
+   * Integers method. The second method written below computes teh factorial function value using an
+   * interative method over a "for" loop.
+   *
+   * @param n >= 0, value for which the factorial function is to be computed.
    * @return the computed value of n!
    * @throws IllegalArgumentException when n < 0.
    */
 //  public static long computeRecursive(int n) throws IllegalArgumentException {
-    public static BigInteger factorial(int n) throws IllegalArgumentException {
-      BigInteger a = new BigInteger("1");
+  public static BigInteger computeRecursive(int n) throws IllegalArgumentException {
+    BigInteger result = BigInteger.ONE;
 
-   long result;
     if (n < 0) {
       throw new IllegalArgumentException();
     }
-    if (n == 0) {
-      result = 1;
-    } else {
-      for (int i = n; i >= 2; i++)
-        a = a.multiply(BigInteger.valueOf(i));
-//      result = n * computeRecursive(n-1);
+    if (n > 0) {
+      result = BigInteger.valueOf(n).multiply(computeRecursive(n - 1));
     }
-    return a;
+    return result;
 
   }
 
-  public static long computeIterative(int n) throws IllegalArgumentException {
-    int i;
+  public static BigInteger computeIterative(int n) {
+    BigInteger result = BigInteger.ONE;
     if (n < 0) {
       throw new IllegalArgumentException();
     }
-    long result = 1;
-    for (i = 0; n > i; i++)
-      //   if (n > 0) {
-      result = i * computeIterative(n - 1);
+    for (int i = 1; i <= n; i++)
+    //   if (n > 0) {
+    {
+      result = result.multiply(BigInteger.valueOf(i));
+    }
     return result;
   }
-  }
+}

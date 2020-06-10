@@ -16,5 +16,12 @@ class PalindromesTest {
     assertTrue(Palindromes.testRecursive(""));
 
   }
+  @Test
+  void testDenormalized() {
+    assertTrue(Palindromes.testDenormalized("A man, a plan, a canal - Panama!"));
+    assertFalse(Palindromes.testDenormalized("A man, a plan, a dam - Hoover!"));
+  }
+
+
 
 }

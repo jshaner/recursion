@@ -15,5 +15,25 @@ public class Palindromes {
             && testRecursive(input.substring(1, input.length() - 1))
     );
   }
+  public static boolean testDenormalized(String input) {
+    String normalized = input.replaceAll("[\\W_]+", "").toLowerCase();
+    return testRecursive(normalized);
+  }
 
+  public static boolean testIterative(String input) {
+    boolean isPalindrome = true;
+
+
+    for (int i = 0, j = input.length() - 1; i < j; i++, j--) {
+      if (input.charAt(i) != input.charAt(j)) {
+        isPalindrome = false;
+        break;
+      }
+    }
+    return isPalindrome;
+  }
+  public static boolean testReverseIterative(String input) {
+    StringBuilder builder = new StringBuilder(input);
+    return input.equals(builder.reverse().toString());
+  }
 }

@@ -34,17 +34,17 @@ class FactorialsTest {
   };
 
   @Test
-  void BigInteger() {
+  void computeRecursive() {
 //    for (long[] testCase : testCases) {
     for (int i = 0; i < params.length; i++) {
 //      int n = (int) testCase[0];
 //      long expected = testCase[1];
       int n = params[i];
-      BigInteger expected = BigInteger.valueOf(n);
-      BigInteger actual = BigInteger.valueOf(n);
+      BigInteger expected = BigInteger.valueOf(expecteds[i]);
+      BigInteger actual = Factorials.computeRecursive(n);
       assertEquals(expected, actual);
     }
- //   assertThrows(IllegalArgumentException.class, () -> BigInteger.valueOf(-1));
+    //   assertThrows(IllegalArgumentException.class, () -> BigInteger.valueOf(-1));
   }
 
   @Test
@@ -54,11 +54,10 @@ class FactorialsTest {
 //      int n = (int) testCase[0];
 //      long expected = testCase[1];
       int n = params[i];
-      long expected = expecteds[i];
-      long actual = Factorials.computeIterative(n);
+      BigInteger expected = BigInteger.valueOf(expecteds[i]);
+      BigInteger actual = Factorials.computeIterative(n);
       assertEquals(expected, actual);
     }
     assertThrows(IllegalArgumentException.class, () -> Factorials.computeIterative(-1));
   }
-
 }
