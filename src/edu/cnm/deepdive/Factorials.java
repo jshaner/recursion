@@ -29,4 +29,15 @@ public class Factorials {
 
   }
 
-}
+  public static long computeIterative(int n) throws IllegalArgumentException {
+    int i;
+    if (n < 0) {
+      throw new IllegalArgumentException();
+    }
+    long result = 1;
+    for (i = 0; n > i; i++)
+      //   if (n > 0) {
+      result = i * computeIterative(n - 1);
+    return result;
+  }
+  }

@@ -16,6 +16,15 @@ class FactorialsTest {
       1, 1, 120, 3628800, 6227020800L
   };
 
+  static final BigInteger[] bigExpecteds = {
+      BigInteger.valueOf(1),
+      BigInteger.valueOf(1),
+      BigInteger.valueOf(120),
+      BigInteger.valueOf(3628800),
+      BigInteger.valueOf(6227020800L),
+
+  };
+
   static final long[][] testCases = {
       {0, 1},
       {1, 1},
@@ -36,6 +45,20 @@ class FactorialsTest {
       assertEquals(expected, actual);
     }
  //   assertThrows(IllegalArgumentException.class, () -> BigInteger.valueOf(-1));
+  }
+
+  @Test
+  void computeIterative() {
+//    for (long[] testCase : testCases) {
+    for (int i = 0; i < params.length; i++) {
+//      int n = (int) testCase[0];
+//      long expected = testCase[1];
+      int n = params[i];
+      long expected = expecteds[i];
+      long actual = Factorials.computeIterative(n);
+      assertEquals(expected, actual);
+    }
+    assertThrows(IllegalArgumentException.class, () -> Factorials.computeIterative(-1));
   }
 
 }
