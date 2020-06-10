@@ -4,9 +4,9 @@ import java.math.BigInteger;
 
 public class Factorials {
 
-  /**
-   *
-   * @param n
+  /** The first method written computes the factorial function value using multiplication of Big Integers method.
+   *  The second method written below computes teh factorial function value using an interative method over a "for" loop.
+   * @param n >= 0
    * @return the computed value of n!
    * @throws IllegalArgumentException when n < 0.
    */
